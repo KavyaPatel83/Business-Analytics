@@ -1,0 +1,44 @@
+[
+    {
+        "step_num": 1,
+        "step_name": "Raw Dataset Loaded",
+        "rows_remaining": 51717,
+        "rows_dropped": 0,
+        "description": "Initial raw Zomato Bangalore listing dataset with multi-zone listing duplicates."
+    },
+    {
+        "step_num": 2,
+        "step_name": "Deduplicate Restaurants",
+        "rows_remaining": 12499,
+        "rows_dropped": 39218,
+        "description": "Removed duplicate listings for identical restaurant entities listed across multiple Bangalore search zones."
+    },
+    {
+        "step_num": 3,
+        "step_name": "Filter Unrated and NEW Outlets",
+        "rows_remaining": 9316,
+        "rows_dropped": 3183,
+        "description": "Extracted numeric ratings out of 5.0 and removed unrated outlets marked as 'NEW' or '-'."
+    },
+    {
+        "step_num": 4,
+        "step_name": "Parse Cost for Two",
+        "rows_remaining": 9284,
+        "rows_dropped": 32,
+        "description": "Cleaned comma thousand-separators and parsed cost for two into numeric values in INR."
+    },
+    {
+        "step_num": 5,
+        "step_name": "Drop Incomplete Records",
+        "rows_remaining": 9244,
+        "rows_dropped": 40,
+        "description": "Removed records missing location, cuisines, restaurant category, or with zero cost."
+    },
+    {
+        "step_num": 6,
+        "step_name": "Feature Engineering & Transformations",
+        "rows_remaining": 9244,
+        "rows_dropped": 0,
+        "description": "Binary encoded services, grouped rare types into 'Other', computed log(cost) & log(votes), and established highly_rated target (>= 4.0)."
+    }
+]
